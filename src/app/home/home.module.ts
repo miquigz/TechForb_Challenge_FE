@@ -11,6 +11,8 @@ import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { PointsComponent } from './pages/points/points.component';
 import { AssistanceComponent } from './pages/assistance/assistance.component';
 import { MaterialModule } from '../material/material.module';
+import { NavHomeComponent } from './pages/home/components/nav-home/nav-home.component';
+import { NavItemComponent } from './layout/components/nav-item/nav-item.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MaterialModule } from '../material/material.module';
     TransactionsComponent,
     InsuranceComponent,
     PointsComponent,
-    AssistanceComponent
+    AssistanceComponent,
+    NavHomeComponent,
+    NavItemComponent
   ],
   imports: [
     CommonModule,

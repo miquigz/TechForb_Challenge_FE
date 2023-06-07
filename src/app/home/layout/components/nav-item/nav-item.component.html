@@ -1,0 +1,10 @@
+<div [routerLink]="path" class="cursor-pointer text-gray-300 sm:transition sm:duration-300 sm:hover:text-indigo-300 w-full my-2 flex">
+    <div class="rounded-full p-3"
+    routerLinkActive="bg-gray-800/95 shadow-lg" [routerLinkActiveOptions]="{ exact: true }">
+        <i ngClass="{{icon}}"
+        class=" h-8 flex justify-center w-8 text-2xl " aria-hidden="true"></i>
+    </div>
+    <div class="w-fit flex items-center ml-4">
+        <span class="font-semibold">{{title}}</span>
+    </div>
+</div>

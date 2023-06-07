@@ -1,8 +1,32 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        Sidenav content
+<mat-sidenav-container class="min-h-screen">
+    <mat-sidenav #sidenav 
+    [mode]="sidebarMobile ? 'over' : 'side'" [(opened)]="opened" class="border-none">
+        <div  class="w-48 flex flex-col items-center justify-center border-none">
+            <h1  class="text-2xl font-bold mt-2">LOGO</h1>
+            <div class="w-full flex flex-col mt-4 px-2">
+                <ul>
+                    <li>
+                        <app-nav-item path="/home" title="Inicio" icon="fa fa-home"></app-nav-item>
+                    </li>
+                    <li>
+                        <app-nav-item path="/home/cards" title="Tarjetas" icon="fa fa-credit-card"></app-nav-item>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="bg-pink-50">
+        <div (click)="toggleSidenav()" class="cursor-pointer flex w-full">
+            <span class="bg-white rounded-r-xl px-2 py-0.5 absolute">
+                <ng-container *ngIf="opened; else closedSideNavbar">
+                    <li class="h-2 z-10 text-2xl fa fa-times"></li>
+                </ng-container>
+                <ng-template #closedSideNavbar>
+                    <li class="h-2 z-10 text-2xl fa fa-arrow-right"></li>
+                </ng-template>
+                
+            </span>
+        </div>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

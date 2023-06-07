@@ -7,12 +7,14 @@ import { AssistanceComponent } from './pages/assistance/assistance.component';
 import { PointsComponent } from './pages/points/points.component';
 import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { ProvidesComponent } from './pages/provides/provides.component';
+import { CardsComponent } from './pages/cards/cards.component';
 
 const routes: Routes = [
   {
-    path: '', component: LayoutComponent, children: [
+    path: '', component: LayoutComponent, 
+    children: [
       {
-        path: 'home', component: HomeComponent
+        path: '', component: HomeComponent
       },
       {
         path: 'transactions', component: TransactionsComponent
@@ -28,6 +30,9 @@ const routes: Routes = [
       },
       {
         path: 'insurance', component:InsuranceComponent
+      },
+      {
+        path: 'cards', component: CardsComponent
       }
     ]
   }
