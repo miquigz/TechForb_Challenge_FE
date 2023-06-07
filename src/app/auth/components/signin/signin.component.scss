@@ -1,0 +1,14 @@
+.sigin{
+    background-image: url('./../../../../assets/auth/bg-auth.webp');
+    background-size: contain
+}
+
+@media (max-width: 768px) {
+    .sigin{
+        background-size: cover;
+    }
+}
+
+.warnmessage{
+    @apply text-red-500 text-xs;
+}

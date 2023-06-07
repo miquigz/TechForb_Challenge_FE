@@ -1,1 +1,63 @@
-<p>signin works!</p>
+<div class="min-h-screen h-full flex flex-col sm:flex-row sigin">
+    <div class="w-full h-3/6 sm:h-full sm:w-3/6 flex justify-center items-center">
+        <h2 class="text-2xl md:text-3xl font-semibold -translate-y-16 text-gray-500">Bienvenidos a <span class="font-bold text-indigo-900/95">Unicomer</span></h2>
+    </div>
+    <div class="flex flex-col sm:h-full sm:w-3/6 w-full bg-indigo-900/[0.90] h-3/6">
+        <div class="my-2 w-full flex flex-col">
+            <span class="text-2xl text-gray-50 md:p-16 font-bold px-8 pt-2">LOGO</span>
+            <div class="mt-4">
+                <form
+                (ngSubmit)="loginSubmit(loginForm)" [formGroup]="loginForm" 
+                class="w-full flex flex-col items-center">
+                    <div class="w-4/6 sm:w-3/6 md:w-3/6 my-1 sm:my-4 py-1 text-sm sm:text-lg font-bold flex flex-col">
+                        <span class="text-gray-300 font-semibold">Tipo de documento</span>
+                        <input formControlName="IDtype" type="text" class="ring-transparent py-2 text-gray-300  ring-none bg-transparent border-b-gray-500 border-b-2">
+                        <div class="h-2 sm:h-6">
+                            <span class="warnmessage" *ngIf="loginForm.controls['IDtype'].hasError('IDtype') && !loginForm.hasError('required')">
+                                Por favor, ingrese un tipo de documento valido.
+                            </span>
+                            <span class="warnmessage" *ngIf="loginForm.controls['IDtype'].hasError('required') && loginForm.controls['IDtype'].touched">
+                                Tipo de documento es <strong>requerido</strong>.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-4/6 sm:w-3/6 md:w-3/6 my-1 sm:my-4 py-1 text-sm sm:text-lg flex flex-col font-bold">
+                        <span class="text-gray-300 font-semibold">Numero de documento</span>
+                        <input formControlName="documentNumber" type="number" class="ring-transparent py-2 text-gray-300 ring-none bg-transparent border-b-gray-500 border-b-2">
+                        <div class="h-2 sm:h-6">
+                            <span class="warnmessage" *ngIf="loginForm.controls['documentNumber'].hasError('required') && loginForm.controls['documentNumber'].touched">
+                                Numero de documento es <strong>requerido</strong>
+                            </span>
+                            <span class="warnmessage" *ngIf="loginForm.controls['documentNumber'].hasError('minlength')">
+                                El numero de documento debe tener almenos <strong>8 numeros</strong>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-4/6 sm:w-3/6 md:w-3/6 my-1 sm:my-4 py-1 text-sm flex flex-col sm:text-lg font-bold">
+                        <span class="text-gray-300 font-semibold">Clave</span>
+                        <input formControlName="password" type="password" class="ring-transparent py-2 text-gray-300 ring-none bg-transparent border-b-gray-500 border-b-2">
+                        <div class="h-2 sm:h-6">
+                            <span class="warnmessage"
+                            *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+                                La contrase;a es <strong>requerida</strong>
+                            </span>
+                            <span class="text-red-400 text-xs" *ngIf="loginForm.controls['password'].hasError('minlength')">
+                                La contrase;a debe contener almenos <strong>7 caracteres</strong>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center mt-1.5 sm:mt-0">
+                        <button class="bg-gray-50 w-4/6 sm:w-3/6 md:w-3/6 rounded-xl py-1 text-sm sm:text-lg font-semibold">Ingresar</button>
+                    </div>
+                </form>
+                <div class="w-full hidden sm:flex justify-center sm:mt-16">
+                    <p class="text-gray-300">Teclado virtual</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="h-full flex justify-center items-end">
+            <a class="text-sm text-gray-300 mb-8 cursor-pointer">¿No tienes cuenta? Registrate Aquí</a>
+        </div>
+    </div>
+</div>

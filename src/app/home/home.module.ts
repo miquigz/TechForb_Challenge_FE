@@ -10,6 +10,7 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { InsuranceComponent } from './pages/insurance/insurance.component';
 import { PointsComponent } from './pages/points/points.component';
 import { AssistanceComponent } from './pages/assistance/assistance.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AssistanceComponent } from './pages/assistance/assistance.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MaterialModule
   ]
 })
 export class HomeModule { }

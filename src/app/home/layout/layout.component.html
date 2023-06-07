@@ -1,1 +1,8 @@
-<p>layout works!</p>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        Sidenav content
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
