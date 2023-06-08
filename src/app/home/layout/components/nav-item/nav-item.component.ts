@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MenuItem } from 'src/app/home/interfaces/menu-item';
 
 @Component({
   selector: 'app-nav-item',
@@ -10,13 +11,15 @@ export class NavItemComponent {
   @Input() icon: string;
   @Input() title: string;
   @Input() path: string;
-  //TODO: Hacer object
+
+  @Input() MenuItems: MenuItem;
 
 
   constructor() { 
     this.icon = '';
-    this.path = '';
     this.title = '';
+    this.path = '';
+    this.MenuItems = {icon: '', title: '', path: ''};
   }
 
 }

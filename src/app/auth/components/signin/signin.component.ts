@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { first, take } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +15,7 @@ export class SigninComponent {
   
   constructor( 
     private router:Router,
-    // private authService:AuthService,
+    private authService:AuthService,
     private fs:FormBuilder){ }
 
   ngOnInit(): void {
@@ -26,7 +28,23 @@ export class SigninComponent {
 
   loginSubmit(form:FormGroup){
     if (form.valid ){
-      //TODO : llamada service
+      const loginData = {
+        documentNumber: form.value.documentNumber,
+        password: form.value.password
+      }
+      this.authService.login(loginData)
+      .pipe(take(1))
+      .subscribe({
+        next: (resp:any) => {
+          localStorage.setItem('ACCESS_TOKEN', resp.token);
+          this.router.navigateByUrl('/home');
+          //TODO: Success snackbar
+        },
+        error: (err:any) => {
+          console.log(err);
+          this.loginForm.controls['password'].setValue('');
+          //TODO: SNACKBAR ERROR
+        }});
     }
   }
 
