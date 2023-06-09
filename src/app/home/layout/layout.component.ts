@@ -40,6 +40,7 @@ export class LayoutComponent implements OnInit {
 
   checkSidebarMobile() {
     this.sidebarMobile = window.innerWidth < 640;
+    this.opened = window.innerWidth >= 640;
   }
 
 
