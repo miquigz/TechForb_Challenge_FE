@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take, timer } from 'rxjs';
+import { ToastData } from '../interfaces/toast-data';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class CoreService {
 
   showLoader$:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  toastData$:BehaviorSubject<ToastData> = 
+  new BehaviorSubject<ToastData>({message:'',show:false,background:'bg-gray-800',duration:5000});
   
   constructor() { }
 
@@ -18,6 +21,16 @@ export class CoreService {
     this.showLoader$.next(value);
   }
 
-  
+  getToastData(){
+    return this.toastData$.asObservable();
+  }
+
+  setToastData(value:ToastData){
+    this.toastData$.next(value);
+    if(value.show) 
+      timer(value.duration)
+      .pipe(take(1))
+      .subscribe((_)=> this.toastData$.next({...value, show:false}));
+  }
 
 }

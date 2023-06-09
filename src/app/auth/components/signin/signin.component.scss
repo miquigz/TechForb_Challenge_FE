@@ -1,7 +1,12 @@
-.sigin{
+.signin{
     background-image: url('./../../../../assets/auth/bg-auth.webp');
-    background-size: contain
+    background-size: contain;
+    overflow-y: hidden !important;
 }
+
+.mat-snack-bar-container {
+    overflow-y: hidden;
+  }
 
 @media (max-width: 768px) {
     .sigin{

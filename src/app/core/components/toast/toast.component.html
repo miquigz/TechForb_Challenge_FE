@@ -1,1 +1,6 @@
-<p>toast works!</p>
+<ng-container *ngIf="(toast | async)?.show">
+    <div [ngClass]="(toast | async)?.background"
+class="fixed bottom-0 left-5 mb-4 mr-4 p-4 rounded text-white shadow-xl">
+        <span class="font-bold">{{ (toast | async)?.message}}</span>
+    </div>
+</ng-container>
