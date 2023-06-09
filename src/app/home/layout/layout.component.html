@@ -1,15 +1,12 @@
 <mat-sidenav-container class="min-h-screen">
     <mat-sidenav #sidenav 
     [mode]="sidebarMobile ? 'over' : 'side'" [(opened)]="opened" class="border-none">
-        <div  class="w-48 flex flex-col items-center justify-center border-none">
+        <div  class="lg:w-52 w-48 flex flex-col items-center justify-center border-none">
             <h1  class="text-2xl font-bold mt-2">LOGO</h1>
             <div class="w-full flex flex-col mt-4 px-2">
                 <ul>
-                    <li>
-                        <app-nav-item path="/home" title="Inicio" icon="fa fa-home"></app-nav-item>
-                    </li>
-                    <li>
-                        <app-nav-item path="/home/cards" title="Tarjetas" icon="fa fa-credit-card"></app-nav-item>
+                    <li *ngFor="let navItem of navItems">
+                        <app-nav-item [menuItem]="navItem"></app-nav-item>
                     </li>
                 </ul>
             </div>

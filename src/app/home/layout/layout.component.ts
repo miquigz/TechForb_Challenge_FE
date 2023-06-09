@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { MenuItem } from '../interfaces/menu-item';
 
 @Component({
   selector: 'app-layout',
@@ -10,13 +11,22 @@ export class LayoutComponent implements OnInit {
   opened: boolean;
   sidebarMobile: boolean;
 
+  navItems: MenuItem[];
+
   constructor(){
     this.opened = true;
     this.sidebarMobile = false;
+    this.navItems =
+    [
+      { icon: 'fa fa-home', title: 'Inicio', path: '/home' },
+      { icon: 'fa fa-credit-card', title: 'Tarjetas', path: '/home/cards' },
+      { icon: 'fa fa-sign-out', title: 'Cerrar sesion', path: '/auth/signin' },
+    ]
   }
 
   ngOnInit(): void {
     this.checkSidebarMobile();  
+
   }
 
   toggleSidenav() {
@@ -32,7 +42,6 @@ export class LayoutComponent implements OnInit {
     this.sidebarMobile = window.innerWidth < 640;
   }
 
-  
 
 
 }

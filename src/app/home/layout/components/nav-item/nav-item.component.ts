@@ -8,18 +8,15 @@ import { MenuItem } from 'src/app/home/interfaces/menu-item';
 })
 export class NavItemComponent {
 
-  @Input() icon: string;
-  @Input() title: string;
-  @Input() path: string;
-
-  @Input() MenuItems: MenuItem;
-
+  @Input() menuItem: MenuItem;
 
   constructor() { 
-    this.icon = '';
-    this.title = '';
-    this.path = '';
-    this.MenuItems = {icon: '', title: '', path: ''};
+    this.menuItem = {icon: '', title: '', path: ''};
+  }
+
+  logout(){
+    localStorage.removeItem("ACCESS_TOKEN");
+    console.log(localStorage.getItem("ACCESS_TOKEN"));
   }
 
 }
