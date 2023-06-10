@@ -4,13 +4,24 @@
         <div class="w-full flex justify-center sm:justify-normal">
             <h2 class="mx-8 mt-4 text-2xl font-bold">Inicio</h2>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3">
-            <app-card [cbu]="User.cbu || ''" [currency]="User.currency || 0" [titular]="User.lastname +' '+ User.name"></app-card>
-            <app-currency-card></app-currency-card>
-            <app-currency-card></app-currency-card>
-            <!-- <app-card></app-card>
-            <app-card></app-card> -->
+        <div class="w-full flex flex-col px-2 md:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3">
+                <app-card [cbu]="User.cbu || ''" [currency]="User.currency || 0" [titular]="User.lastname +' '+ User.name"></app-card>
+                <app-currency-card [outcome]="false" ></app-currency-card>
+                <app-currency-card [outcome]="true"></app-currency-card>
+                <!-- <app-card></app-card>
+                <app-card></app-card> -->
+            </div>
+            <div class="flex w-full justify-between flex-wrap lg:flex-nowrap">
+                <div class="w-full lg:w-6/12 bg-orange-300 h-96 rounded-lg mb-8 sm:mb-0">
+    
+                </div>
+                <div class="w-full lg:w-5/12 bg-gray-50 shadow-lg rounded-lg">
+                    <app-last-transactions [cbu]="User.cbu || ''"></app-last-transactions>
+                </div>
+            </div>
         </div>
+        
     
     
     

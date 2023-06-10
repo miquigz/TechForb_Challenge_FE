@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { User } from '../auth/interfaces/user.interface';
 import { BehaviorSubject, Observable, switchMap, take, tap } from 'rxjs';
 import { DEFAULT_USER } from '../core/constants/defaultUser';
+import { ComparedMonth } from '../home/interfaces/comparedMonth';
+import { Transaction } from '../home/interfaces/transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +45,8 @@ export class UserService {
     this.User.next(user);
   }
 
-  getActualMonthTransactions(){
-    return this.http.get(`${this._url}/transaction/actual-month/${this.User.getValue().cbu}`);
+  getActualMonthTransactions():Observable<Transaction[]>{
+    return this.http.get<Transaction[]>(`${this._url}/transaction/actual-month/${this.User.getValue().cbu}`);
   }
 
   getLastMonthTransactions(){
@@ -55,7 +57,13 @@ export class UserService {
     return this.http.get(`${this._url}/menu-item`);
   }
 
+  getComparedOutcomeTransactions():Observable<ComparedMonth>{
+    return this.http.get<ComparedMonth>(`${this._url}/transaction/compare-months/${this.User.getValue().cbu}?outcome=true`);
+  }
 
-    
+  getComparedIncomeTransactions():Observable<ComparedMonth>{
+    return this.http.get<ComparedMonth>(`${this._url}/transaction/compare-months/${this.User.getValue().cbu}`);
+  }
+
 
 }

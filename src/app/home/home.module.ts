@@ -15,6 +15,9 @@ import { NavHomeComponent } from './pages/home/components/nav-home/nav-home.comp
 import { NavItemComponent } from './layout/components/nav-item/nav-item.component';
 import { CardComponent } from './pages/home/components/card/card.component';
 import { CurrencyCardComponent } from './pages/home/components/currency-card/currency-card.component';
+import { LastTransactionsComponent } from './pages/home/components/last-transactions/last-transactions.component';
+import { TransactionStatePipe } from './pipes/transaction-state.pipe';
+
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { CurrencyCardComponent } from './pages/home/components/currency-card/cur
     NavHomeComponent,
     NavItemComponent,
     CardComponent,
-    CurrencyCardComponent
+    CurrencyCardComponent,
+    LastTransactionsComponent,
+    TransactionStatePipe
   ],
   imports: [
     CommonModule,
