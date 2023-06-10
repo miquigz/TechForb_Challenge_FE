@@ -4,7 +4,7 @@ export interface User {
     documentNumber: number;
     name: string;
     lastname: string;
-    password: string;
+    password?: string;
     createdAt?: Date;
     cbu?: string;
     currency?: number;

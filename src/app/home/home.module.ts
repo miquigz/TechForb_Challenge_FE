@@ -13,6 +13,7 @@ import { AssistanceComponent } from './pages/assistance/assistance.component';
 import { MaterialModule } from '../material/material.module';
 import { NavHomeComponent } from './pages/home/components/nav-home/nav-home.component';
 import { NavItemComponent } from './layout/components/nav-item/nav-item.component';
+import { CardComponent } from './pages/home/components/card/card.component';
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { NavItemComponent } from './layout/components/nav-item/nav-item.componen
     PointsComponent,
     AssistanceComponent,
     NavHomeComponent,
-    NavItemComponent
+    NavItemComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class HomeModule { }
