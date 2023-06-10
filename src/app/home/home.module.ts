@@ -14,6 +14,7 @@ import { MaterialModule } from '../material/material.module';
 import { NavHomeComponent } from './pages/home/components/nav-home/nav-home.component';
 import { NavItemComponent } from './layout/components/nav-item/nav-item.component';
 import { CardComponent } from './pages/home/components/card/card.component';
+import { CurrencyCardComponent } from './pages/home/components/currency-card/currency-card.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CardComponent } from './pages/home/components/card/card.component';
     AssistanceComponent,
     NavHomeComponent,
     NavItemComponent,
-    CardComponent
+    CardComponent,
+    CurrencyCardComponent
   ],
   imports: [
     CommonModule,

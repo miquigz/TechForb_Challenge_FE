@@ -6,6 +6,8 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3">
             <app-card [cbu]="User.cbu || ''" [currency]="User.currency || 0" [titular]="User.lastname +' '+ User.name"></app-card>
+            <app-currency-card></app-currency-card>
+            <app-currency-card></app-currency-card>
             <!-- <app-card></app-card>
             <app-card></app-card> -->
         </div>

@@ -42,6 +42,20 @@ export class UserService {
   setUserState(user:User){
     this.User.next(user);
   }
+
+  getActualMonthTransactions(){
+    return this.http.get(`${this._url}/transaction/actual-month/${this.User.getValue().cbu}`);
+  }
+
+  getLastMonthTransactions(){
+    return this.http.get(`${this._url}/transaction/last-month/${this.User.getValue().cbu}`);
+  }
+
+  getMenuItems(){
+    return this.http.get(`${this._url}/menu-item`);
+  }
+
+
     
 
 }

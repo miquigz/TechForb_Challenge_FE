@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private _userService:UserService,
     private _coreService:CoreService,
+    private Router:Router
     ){
     }
 
@@ -31,8 +32,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.loadingData = false;
       },
       error: (err:any) => {
-        this._coreService.setToastData({ show: true, message: err.error.message, background: 'bg-red-500', duration: 5000 });
-        inject(Router).navigate(['/auth/login']);//Inyectamos solo si hay un error
+        this._coreService.setToastData({ show: true, message: "Reinice la sesion, por favor", background: 'bg-red-500', duration: 5000 });
+        localStorage.removeItem('ACCESS_TOKEN');
+        this.Router.navigate(['/auth/login']);
       }
     })
   }
