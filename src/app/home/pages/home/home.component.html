@@ -5,9 +5,9 @@
             <h2 class="mx-8 mt-4 text-2xl font-bold">Inicio</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3">
-            <app-card></app-card>
-            <app-card></app-card>
-            <app-card></app-card>
+            <app-card [cbu]="User.cbu || ''" [currency]="User.currency || 0" [titular]="User.lastname +' '+ User.name"></app-card>
+            <!-- <app-card></app-card>
+            <app-card></app-card> -->
         </div>
     
     
