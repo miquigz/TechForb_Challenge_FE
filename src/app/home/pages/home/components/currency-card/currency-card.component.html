@@ -1,0 +1,47 @@
+<div class="bg-card2 flex w-5/6 mx-auto sm:mr-0 sm:ml-auto rounded-lg my-8 h-64
+sm:hover:skew-y-1 sm:hover:scale-[1.01] sm:transition sm:duration-300 shadow-sm sm:hover:shadow-xl ">
+    <ng-container *ngIf="!loading; else spinner">
+        <div class="w-full h-full flex flex-wrap">
+            <div class="w-full flex">
+                <div class="w-8/12 pl-2 lg:pl-4 pt-4">
+                    <div class="flex list-none w-fit">
+                        <span class="cursor-pointer text-gray-300 sm:transition sm:duration-300 sm:hover:text-indigo-300 w-full flex">
+                            <span class="rounded-full p-3 bg-gray-800/95 shadow-lg">
+                                <i class="h-8 flex justify-center w-8 text-2xl fa fa-money" aria-hidden="true"></i>
+                            </span>
+                        </span>
+                        <div class="flex flex-col pl-2">
+                            <span class="text-gray-300 text-normal font-semibold">
+                                {{comparedMonthData.type === 'outcome'? 'Egresos' : 'Ingresos'}}
+                            </span>
+                            <span class="text-lg font-bold">${{comparedMonthData.actualMonthAmount | number:'1.0-0'}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col list-none pt-4">
+                    <div class="flex flex-col items-end" [ngClass]="{'text-red-400': !comparedMonthData.actualPossitive, 
+                    'text-green-400': comparedMonthData.actualPossitive}">
+                        <span class="flex pr-8">
+                            <li class="fa"
+                            [ngClass]="{'fa-caret-down' : !comparedMonthData.actualPossitive,
+                                        'fa-caret-up' : comparedMonthData.actualPossitive}"></li>
+                        </span>
+                        <span class="font-semibold">{{comparedMonthData.percentage | number: '1.2-2'}}%</span>
+                    </div>
+                    <span class="text-gray-800">Mes pasado</span>
+                </div>
+            </div>
+            <div class="w-full flex flex-col px-6">
+                <p class="text-gray-300">Este mes: <span class="text-gray-200 font-semibold">${{comparedMonthData.actualMonthAmount | number:'1.0-0'}}</span></p>
+                <p class="text-gray-300">Ultimo mes: <span class="text-gray-200 font-semibold">${{comparedMonthData.lastMonthAmount | number:'1.0-0'}}</span></p>
+            </div>
+        </div>
+
+    </ng-container>
+    <ng-template #spinner>
+        <div class="w-full flex justify-center h-full items-center">
+            <mat-spinner [color]="'disabled'" [strokeWidth]="1.7"></mat-spinner>
+        </div>
+    </ng-template>
+    
+</div>
