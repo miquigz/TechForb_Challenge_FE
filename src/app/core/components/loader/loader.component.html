@@ -1,3 +1,10 @@
-<div class="min-h-screen flex justify-center bg-gray-800/35">
-
+<div class="min-h-screen fixed z-30 top-0 left-0 flex justify-center bg-gray-800/[0.25] w-full mx-0">
+    <div class="flex w-full items-center justify-center w-full">
+        <div class="flex items-center justify-center gap-20 [filter:url(#gooey)]">
+            <div class="animate-movealt h-48 w-48 rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
+        
+            <div class="animate-move h-32 w-32 rounded-full bg-zinc-300 bg-gradient-to-br from-white to-zinc-400 shadow-inner shadow-white"></div>
+        </div>
+    </div>      
+    <svg><filter id="gooey"><feGaussianBlur in="SourceGraphic" stdDeviation="25" /><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 90 -25"/></filter></svg>
 </div>
