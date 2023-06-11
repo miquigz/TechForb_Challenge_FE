@@ -17,6 +17,8 @@ import { CardComponent } from './pages/home/components/card/card.component';
 import { CurrencyCardComponent } from './pages/home/components/currency-card/currency-card.component';
 import { LastTransactionsComponent } from './pages/home/components/last-transactions/last-transactions.component';
 import { TransactionStatePipe } from './pipes/transaction-state.pipe';
+import { CurrencyChartComponent } from './pages/home/components/currency-chart/currency-chart.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 
@@ -35,12 +37,14 @@ import { TransactionStatePipe } from './pipes/transaction-state.pipe';
     CardComponent,
     CurrencyCardComponent,
     LastTransactionsComponent,
-    TransactionStatePipe
+    TransactionStatePipe,
+    CurrencyChartComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
+    NgxEchartsModule.forChild(),
   ]
 })
 export class HomeModule { }

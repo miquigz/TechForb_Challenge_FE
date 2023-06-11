@@ -13,10 +13,10 @@
                 <app-card></app-card> -->
             </div>
             <div class="flex w-full justify-between flex-wrap lg:flex-nowrap">
-                <div class="w-full lg:w-6/12 bg-orange-300 h-96 rounded-lg mb-8 sm:mb-0">
-    
+                <div class="w-full lg:w-6/12 h-96 rounded-lg min-h-[484px] mb-8 sm:mb-0 bg-gray-50 p-2 shadow-lg">
+                    <app-currency-chart></app-currency-chart>
                 </div>
-                <div class="w-full lg:w-5/12 bg-gray-50 shadow-lg rounded-lg">
+                <div class="w-full lg:w-5/12 bg-gray-50 shadow-lg min-h-[484px] rounded-lg">
                     <app-last-transactions [cbu]="User.cbu || ''"></app-last-transactions>
                 </div>
             </div>

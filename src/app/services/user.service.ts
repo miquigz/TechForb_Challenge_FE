@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../auth/interfaces/user.interface';
 import { BehaviorSubject, Observable, switchMap, take, tap } from 'rxjs';
 import { DEFAULT_USER } from '../core/constants/defaultUser';
-import { ComparedMonth } from '../home/interfaces/comparedMonth';
+import { ComparedMonth, comparedMonthCurrency } from '../home/interfaces/comparedMonth';
 import { Transaction } from '../home/interfaces/transaction';
 
 @Injectable({
@@ -14,6 +14,14 @@ export class UserService {
 
   User:BehaviorSubject<User> = new BehaviorSubject<User>(DEFAULT_USER);
   defaultUser:BehaviorSubject<User> = new BehaviorSubject<User>(DEFAULT_USER);
+
+  currencyComparedData:BehaviorSubject<comparedMonthCurrency> = new BehaviorSubject<comparedMonthCurrency>({
+    outcomeActual: 0,
+    outcomeLast: 0,
+    incomeActual: 0,
+    incomeLast: 0
+  });
+
 
   private _url:string;
 
@@ -63,6 +71,19 @@ export class UserService {
 
   getComparedIncomeTransactions():Observable<ComparedMonth>{
     return this.http.get<ComparedMonth>(`${this._url}/transaction/compare-months/${this.User.getValue().cbu}`);
+  }
+
+  setCurrencyComparedData(data:comparedMonthCurrency){
+    this.currencyComparedData.next(data);
+  }
+
+  getCurrencyComparedData(){
+    return this.currencyComparedData.asObservable();
+  }
+
+
+  getExtractions(){
+    return this.http.get(`${this._url}/extraction/${this.User.getValue().cbu}`);
   }
 
 

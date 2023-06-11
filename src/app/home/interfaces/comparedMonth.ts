@@ -5,3 +5,11 @@ export interface ComparedMonth {
     percentage:        number;
     actualPossitive:   boolean;
 }
+
+
+export interface comparedMonthCurrency {
+    outcomeActual: number;
+    outcomeLast: number;
+    incomeActual: number;
+    incomeLast: number;
+}

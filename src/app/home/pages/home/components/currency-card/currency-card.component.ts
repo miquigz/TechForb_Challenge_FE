@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { ComparedMonth } from 'src/app/home/interfaces/comparedMonth';
 import { UserService } from 'src/app/services/user.service';
@@ -22,6 +22,12 @@ export class CurrencyCardComponent implements OnInit {
         next: (data:ComparedMonth) => {
           this.comparedMonthData = data;
           this.loading = false;
+          this.userService.setCurrencyComparedData({
+            outcomeActual: data.lastMonthAmount,
+            outcomeLast: data.actualMonthAmount,
+            incomeActual: this.userService.currencyComparedData.getValue().incomeActual,
+            incomeLast: this.userService.currencyComparedData.getValue().incomeLast
+          })
         }
       });
     }
@@ -30,10 +36,17 @@ export class CurrencyCardComponent implements OnInit {
         next: (data:ComparedMonth) => {
           this.comparedMonthData = data;
           this.loading = false;
+          this.userService.setCurrencyComparedData({
+            outcomeActual: this.userService.currencyComparedData.getValue().outcomeActual,
+            outcomeLast: this.userService.currencyComparedData.getValue().outcomeLast,
+            incomeActual: data.lastMonthAmount,
+            incomeLast: data.actualMonthAmount
+          })
         }
       });
     }
   }
+
 
   
 }
