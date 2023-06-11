@@ -19,6 +19,7 @@ import { LastTransactionsComponent } from './pages/home/components/last-transact
 import { TransactionStatePipe } from './pipes/transaction-state.pipe';
 import { CurrencyChartComponent } from './pages/home/components/currency-chart/currency-chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ExtractionsComponent } from './pages/home/components/extractions/extractions.component';
 
 
 
@@ -38,7 +39,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
     CurrencyCardComponent,
     LastTransactionsComponent,
     TransactionStatePipe,
-    CurrencyChartComponent
+    CurrencyChartComponent,
+    ExtractionsComponent
   ],
   imports: [
     CommonModule,

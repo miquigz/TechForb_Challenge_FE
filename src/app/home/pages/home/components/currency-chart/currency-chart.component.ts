@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CurrencyChartComponent {
 
+  isLoading = true;
   outcomeData:number[] = [];
   incomeData:number[] = [];
 
@@ -20,66 +21,71 @@ export class CurrencyChartComponent {
       next: (data:any) => {
         this.outcomeData = [data.outcomeLast, data.outcomeActual];
         this.incomeData = [data.incomeLast, data.incomeActual];
+        this.isLoading = false;
+        this.setOptions();
       }
     })
   }
 
-  isLoading = true;
-  options: EChartsOption = {
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'cross',
-        label: {
-          backgroundColor: '#674a99',
+  setOptions(){
+    this.options = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#674a99',
+          },
         },
       },
-    },
-    legend: {
-      data: ['Ingresos', 'Egresos'],
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true,
-    },
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mes anterior', 'Mes Actual'],
+      legend: {
+        data: ['Ingresos', 'Egresos'],
       },
-    ],
-    yAxis: [
-      {
-        type: 'value',
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
       },
-    ],
-    series: [
-      {
-        name: 'Ingresos',
-        type: 'line',
-        stack: 'counts',
-        areaStyle: {
-          color: '#7352aa',
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: ['Mes anterior', 'Mes Actual'],
         },
-        label: {
-          show: true,
-          position: 'top',
+      ],
+      yAxis: [
+        {
+          type: 'value',
         },
-        data: [4594, 3545],
-      },
-      {
-        name: 'Egresos',
-        type: 'line',
-        stack: 'counts',
-        areaStyle: {
-          color: '#747ebc',
+      ],
+      series: [
+        {
+          name: 'Ingresos',
+          type: 'line',
+          stack: 'counts',
+          areaStyle: {
+            color: '#7352aa',
+          },
+          label: {
+            show: true,
+            position: 'top',
+          },
+          data: [this.incomeData[0], this.incomeData[1]]
         },
-        data: [1762, 2279],
-      },
-    ],
-  };
+        {
+          name: 'Egresos',
+          type: 'line',
+          stack: 'counts',
+          areaStyle: {
+            color: '#747ebc',
+          },
+          data: [this.outcomeData[0], this.outcomeData[1]],
+        },
+      ],
+    };
+  }
+
+  options!: EChartsOption;
 
 }

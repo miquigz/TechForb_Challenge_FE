@@ -30,10 +30,12 @@ export class LastTransactionsComponent implements OnInit {
     .pipe(take(1))
     .subscribe({
       next: (data:Transaction[]) => {
+        console.log(data)
         this.transactions = data.sort((a:Transaction, b:Transaction) => {
           return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         });
         this.setHoursAndMinutesTransactions();
+        console.log(this.transactions)
         this.actualFiveTransactions = this.transactions.slice(0, 5);
         this.loadingData = false;
       }
