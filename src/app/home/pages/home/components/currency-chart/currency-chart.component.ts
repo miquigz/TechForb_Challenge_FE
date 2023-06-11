@@ -13,16 +13,17 @@ export class CurrencyChartComponent {
   isLoading = true;
   outcomeData:number[] = [];
   incomeData:number[] = [];
+  options!: EChartsOption;
 
   constructor(private userService:UserService){
     this.userService.getCurrencyComparedData()
-    .pipe(take(1))
     .subscribe({
       next: (data:any) => {
-        this.outcomeData = [data.outcomeLast, data.outcomeActual];
-        this.incomeData = [data.incomeLast, data.incomeActual];
+        this.outcomeData = [ data.outcomeActual, data.outcomeLast];
+        this.incomeData = [ data.incomeActual, data.incomeLast];
         this.isLoading = false;
         this.setOptions();
+        console.log(this.outcomeData, this.incomeData)
       }
     })
   }
@@ -86,6 +87,5 @@ export class CurrencyChartComponent {
     };
   }
 
-  options!: EChartsOption;
 
 }

@@ -1,3 +1,9 @@
-
-
+<ng-container *ngIf="!isLoading;else spinner">
 <div echarts [options]="options" [loading]="isLoading" theme="macarons" class="demo-chart" class="demo-chart-600"></div>
+
+</ng-container>
+<ng-template #spinner>
+    <div class="w-full flex justify-center h-full items-center">
+        <mat-spinner [strokeWidth]="1"></mat-spinner>
+    </div>
+</ng-template>
